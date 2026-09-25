@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloxd TierZone</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#0b0d10;
+  color:#f1f1f1;
+}
+
+header{
+  height:72px;
+  background:#11151a;
+  border-bottom:1px solid #272c33;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 6%;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:800;
+  font-size:21px;
+}
+
+.logo{
+  width:42px;
+  height:42px;
+  border-radius:9px;
+  object-fit:cover;
+  background:#1b2027;
+}
+
+.nav{
+  display:flex;
+  gap:22px;
+}
+
+.nav a{
+  color:#aeb5bd;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.nav a:hover{
+  color:#fff;
+}
+
+.hero{
+  max-width:1100px;
+  margin:auto;
+  padding:90px 20px 70px;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:52px;
+  letter-spacing:-2px;
+  margin-bottom:15px;
+}
+
+.hero h1 span{
+  color:#20c8ff;
+}
+
+.hero p{
+  color:#9299a2;
+  max-width:600px;
+  margin:auto;
+  line-height:1.6;
+}
+
+.buttons{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:13px 22px;
+  border-radius:7px;
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+}
+
+.primary{
+  background:#20c8ff;
+  color:#071016;
+}
+
+.secondary{
+  background:#171c22;
+  border:1px solid #30363e;
+  color:white;
+}
+
+.section{
+  max-width:1100px;
+  margin:auto;
+  padding:35px 20px 70px;
+}
+
+.section-title{
+  font-size:27px;
+  margin-bottom:22px;
+}
+
+.mode-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;
+}
+
+.mode{
+  background:#12161b;
+  border:1px solid #292f37;
+  padding:20px;
+  border-radius:8px;
+  text-align:center;
+  font-weight:700;
+}
+
+.mode:hover{
+  border-color:#20c8ff;
+}
+
+.search{
+  width:100%;
+  background:#11151a;
+  border:1px solid #30363e;
+  color:white;
+  padding:15px;
+  border-radius:7px;
+  outline:none;
+  margin-bottom:28px;
+}
+
+.top-three{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-bottom:35px;
+}
+
+.top-card{
+  background:#151a20;
+  border:1px solid #303
