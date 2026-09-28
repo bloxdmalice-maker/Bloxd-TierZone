@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloxd TierZone</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#080808;
+  color:white;
+  min-height:100vh;
+}
+
+#loading{
+  position:fixed;
+  inset:0;
+  background:#080808;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+}
+
+.logo{
+  font-size:42px;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+.loading-text{
+  color:#aaa;
+  font-size:16px;
+}
+
+.spinner{
+  width:35px;
+  height:35px;
+  border:4px solid #333;
+  border-top:4px solid white;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+  margin-bottom:18px;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+#home{
+  display:none;
+  min-height:100vh;
+}
+
+header{
+  padding:25px 8%;
+  border-bottom:1px solid #222;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  font-size:25px;
+  font-weight:bold;
+}
+
+.founder{
+  color:#aaa;
+  font-size:14px;
+}
+
+.hero{
+  min-height:75vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:30px;
+}
+
+.hero h1{
+  font-size:55px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  color:#aaa;
+  font-size:18px;
+  margin-bottom:35px;
+}
+
+.buttons{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+button{
+  border:none;
+  padding:14px 24px;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.leaderboard{
+  background:white;
+  color:black;
+}
+
+.discord{
+  background:#222;
+  color:white;
+  border:1px solid #444;
+}
+
+#board{
+  display:none;
+  padding:50px 8%;
+}
+
+#board h2{
+  text-align:center;
+  font-size:35px;
+  margin-bottom:30px;
+}
+
+.players{
+  max-width:700px;
+  margin:auto;
+}
+
+.player{
+  background:#151515;
+  border:1px solid #292929;
+  padding:18px;
+  margin:10px 0;
+  border-radius:10px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.rank{
+  font-weight:bold;
+}
+
+.tier{
+  color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <div class="logo">Bloxd TierZone</div>
+  <div class="loading-text">Loading...</div>
+</div>
+
+<div id="home">
+
+<header>
+  <div class="brand">Bloxd TierZone</div>
+  <div class="founder">Founder: @bloxd malice</div>
+</header>
+
+<section class="hero">
+  <h1>Bloxd TierZone</h1>
+  <p>Competitive Rankings & Tier List</p>
+
+  <div class="buttons">
+    <button class="leaderboard" onclick="showBoard()">
+      View Leaderboard
+    </button>
+
+    <button class="discord" onclick="joinDiscord()">
+      Join Discord Server
+    </button>
+  </div>
+</section>
+
+<section id="board">
+  <h2>Leaderboard</h2>
+
+  <div class="players">
+    <div class="player">
+      <span><span class="rank">#1</span> Bloxd_Malice_Yt_</span>
+      <span class="tier">LT2 Mace</span>
+    </div>
+
+    <div class="player">
+      <span><span class="rank">#2</span> Player 2</span>
+      <span class="tier">HT3</span>
+    </div>
+
+    <div class="player">
+      <span><span class="rank">#3</span> Player 3</span>
+      <span class="tier">HT4</span>
+    </div>
+
+    <div class="player">
+      <span><span class="rank">#4</span> Player 4</span>
+      <span class="tier">LT4</span>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+setTimeout(function(){
+  document.getElementById("loading").style.display="none";
+  document.getElementById("home").style.display="block";
+},2000);
+
+function showBoard(){
+  document.getElementById("board").style.display="block";
+  document.getElementById("board").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function joinDiscord(){
+  window.open(
+    "https://discord.gg/qhCCcUU9s",
+    "_blank"
+  );
+}
+</script>
+
+</body>
+</html>
