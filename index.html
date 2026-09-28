@@ -6,161 +6,188 @@
 <title>Bloxd TierZone</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#0b0d10;
-  color:#f1f1f1;
+  font-family:Arial,sans-serif;
+  background:#080808;
+  color:#fff;
+  min-height:100vh;
 }
 
-header{
-  height:72px;
-  background:#11151a;
-  border-bottom:1px solid #272c33;
+/* LOADING */
+#loading{
+  position:fixed;
+  inset:0;
+  background:#080808;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+}
+.logo{
+  font-size:44px;
+  font-weight:900;
+}
+.logo span{color:#e63946}
+.loader{
+  width:220px;
+  height:4px;
+  background:#222;
+  margin-top:25px;
+  overflow:hidden;
+}
+.loader span{
+  display:block;
+  height:100%;
+  width:45%;
+  background:#e63946;
+  animation:load 1.5s infinite;
+}
+@keyframes load{
+  from{transform:translateX(-100%)}
+  to{transform:translateX(500%)}
+}
+
+/* HOME */
+#home{display:none}
+nav{
+  height:70px;
+  border-bottom:1px solid #222;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 6%;
-  position:sticky;
-  top:0;
-  z-index:10;
+  padding:0 7%;
 }
-
 .brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-weight:800;
-  font-size:21px;
+  font-size:23px;
+  font-weight:900;
 }
-
-.logo{
-  width:42px;
-  height:42px;
-  border-radius:9px;
-  object-fit:cover;
-  background:#1b2027;
-}
-
-.nav{
-  display:flex;
-  gap:22px;
-}
-
-.nav a{
-  color:#aeb5bd;
-  text-decoration:none;
-  font-size:14px;
-}
-
-.nav a:hover{
-  color:#fff;
+.brand span{color:#e63946}
+.nav-text{
+  color:#888;
+  font-size:13px;
 }
 
 .hero{
-  max-width:1100px;
-  margin:auto;
-  padding:90px 20px 70px;
+  min-height:calc(100vh - 70px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
   text-align:center;
+  padding:30px;
 }
-
-.hero h1{
-  font-size:52px;
-  letter-spacing:-2px;
-  margin-bottom:15px;
+.content{max-width:800px}
+.badge{
+  display:inline-block;
+  padding:8px 14px;
+  border:1px solid #333;
+  border-radius:20px;
+  color:#999;
+  font-size:12px;
+  margin-bottom:22px;
 }
-
-.hero h1 span{
-  color:#20c8ff;
+h1{
+  font-size:clamp(48px,8vw,85px);
+  line-height:.95;
+  font-weight:900;
 }
-
-.hero p{
-  color:#9299a2;
+h1 span{color:#e63946}
+.desc{
   max-width:600px;
-  margin:auto;
+  margin:25px auto;
+  color:#999;
   line-height:1.6;
 }
-
 .buttons{
-  margin-top:30px;
   display:flex;
   justify-content:center;
   gap:12px;
   flex-wrap:wrap;
 }
-
-.btn{
-  padding:13px 22px;
+button{
+  padding:14px 24px;
   border-radius:7px;
-  text-decoration:none;
-  font-weight:700;
+  font-weight:bold;
+  cursor:pointer;
   font-size:14px;
 }
-
 .primary{
-  background:#20c8ff;
-  color:#071016;
+  background:#e63946;
+  color:white;
+  border:1px solid #e63946;
 }
-
 .secondary{
-  background:#171c22;
-  border:1px solid #30363e;
+  background:#151515;
   color:white;
+  border:1px solid #333;
 }
-
-.section{
-  max-width:1100px;
-  margin:auto;
-  padding:35px 20px 70px;
-}
-
-.section-title{
-  font-size:27px;
-  margin-bottom:22px;
-}
-
-.mode-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:12px;
-}
-
-.mode{
-  background:#12161b;
-  border:1px solid #292f37;
-  padding:20px;
-  border-radius:8px;
-  text-align:center;
-  font-weight:700;
-}
-
-.mode:hover{
-  border-color:#20c8ff;
-}
-
-.search{
+footer{
+  position:fixed;
+  bottom:18px;
   width:100%;
-  background:#11151a;
-  border:1px solid #30363e;
-  color:white;
-  padding:15px;
-  border-radius:7px;
-  outline:none;
-  margin-bottom:28px;
+  text-align:center;
+  color:#555;
+  font-size:12px;
 }
+footer span{color:#888}
 
-.top-three{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin-bottom:35px;
+@media(max-width:600px){
+  .nav-text{display:none}
+  nav{padding:0 20px}
 }
+</style>
+</head>
 
-.top-card{
-  background:#151a20;
-  border:1px solid #303
+<body>
+
+<div id="loading">
+  <div class="logo">TIER<span>ZONE</span></div>
+  <div class="loader"><span></span></div>
+</div>
+
+<div id="home">
+
+<nav>
+  <div class="brand">TIER<span>ZONE</span></div>
+  <div class="nav-text">BLOXD.IO COMPETITIVE RANKINGS</div>
+</nav>
+
+<section class="hero">
+  <div class="content">
+
+    <div class="badge">BLOXD.IO COMPETITIVE TIER LIST</div>
+
+    <h1>
+      Welcome to<br>
+      <span>TierZone</span>
+    </h1>
+
+    <p class="desc">
+      The competitive ranking hub for Bloxd.io players.
+      Check rankings, tier tests, results and leaderboards.
+    </p>
+
+    <div class="buttons">
+      <button class="primary">View Leaderboard</button>
+      <button class="secondary">Join Discord Server</button>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  Founder: <span>@bloxd malice</span>
+</footer>
+
+</div>
+
+<script>
+setTimeout(function(){
+  document.getElementById("loading").style.display="none";
+  document.getElementById("home").style.display="block";
+},1800);
+</script>
+
+</body>
+</html>
