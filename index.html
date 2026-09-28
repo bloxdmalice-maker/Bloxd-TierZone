@@ -6,187 +6,885 @@
 <title>Bloxd TierZone</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
-  font-family:Arial,sans-serif;
-  background:#080808;
-  color:#fff;
-  min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#080b10;
+    color:white;
+    min-height:100vh;
 }
 
-/* LOADING */
-#loading{
-  position:fixed;
-  inset:0;
-  background:#080808;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  z-index:10;
+button{
+    cursor:pointer;
+    border:0;
 }
-.logo{
-  font-size:44px;
-  font-weight:900;
+
+.loading{
+    position:fixed;
+    inset:0;
+    background:#080b10;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    z-index:9999;
 }
-.logo span{color:#e63946}
+
 .loader{
-  width:220px;
-  height:4px;
-  background:#222;
-  margin-top:25px;
-  overflow:hidden;
-}
-.loader span{
-  display:block;
-  height:100%;
-  width:45%;
-  background:#e63946;
-  animation:load 1.5s infinite;
-}
-@keyframes load{
-  from{transform:translateX(-100%)}
-  to{transform:translateX(500%)}
+    width:55px;
+    height:55px;
+    border:5px solid #222;
+    border-top:5px solid #00d9ff;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
 }
 
-/* HOME */
-#home{display:none}
+@keyframes spin{
+    to{transform:rotate(360deg);}
+}
+
+.loading h2{
+    margin-top:20px;
+}
+
 nav{
-  height:70px;
-  border-bottom:1px solid #222;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 7%;
+    height:70px;
+    background:#0d1118;
+    border-bottom:1px solid #242b35;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
-.brand{
-  font-size:23px;
-  font-weight:900;
+
+.logoText{
+    font-size:25px;
+    font-weight:900;
 }
-.brand span{color:#e63946}
-.nav-text{
-  color:#888;
-  font-size:13px;
+
+.logoText span{
+    color:#00d9ff;
+}
+
+nav button{
+    background:#151c25;
+    color:white;
+    padding:11px 18px;
+    border-radius:8px;
+    margin-left:7px;
+}
+
+nav button:hover{
+    background:#00a9c9;
 }
 
 .hero{
-  min-height:calc(100vh - 70px);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:30px;
+    min-height:520px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:50px 20px;
+    background:
+    radial-gradient(circle at center,#12323d 0,#080b10 55%);
 }
-.content{max-width:800px}
-.badge{
-  display:inline-block;
-  padding:8px 14px;
-  border:1px solid #333;
-  border-radius:20px;
-  color:#999;
-  font-size:12px;
-  margin-bottom:22px;
+
+.hero h1{
+    font-size:65px;
+    font-weight:900;
 }
-h1{
-  font-size:clamp(48px,8vw,85px);
-  line-height:.95;
-  font-weight:900;
+
+.hero h1 span{
+    color:#00d9ff;
 }
-h1 span{color:#e63946}
-.desc{
-  max-width:600px;
-  margin:25px auto;
-  color:#999;
-  line-height:1.6;
+
+.hero p{
+    color:#aeb7c4;
+    margin:18px 0 30px;
+    font-size:18px;
 }
-.buttons{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
+
+.btn{
+    padding:14px 25px;
+    border-radius:9px;
+    background:#00b9df;
+    color:white;
+    font-weight:bold;
+    margin:5px;
 }
-button{
-  padding:14px 24px;
-  border-radius:7px;
-  font-weight:bold;
-  cursor:pointer;
-  font-size:14px;
+
+.btn.dark{
+    background:#171e28;
+    border:1px solid #303b48;
 }
-.primary{
-  background:#e63946;
-  color:white;
-  border:1px solid #e63946;
+
+section{
+    padding:55px 7%;
 }
-.secondary{
-  background:#151515;
-  color:white;
-  border:1px solid #333;
+
+.title{
+    text-align:center;
+    margin-bottom:30px;
 }
+
+.title h2{
+    font-size:35px;
+}
+
+.title p{
+    color:#8995a3;
+    margin-top:8px;
+}
+
+.modes{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:18px;
+}
+
+.mode{
+    background:#10161f;
+    border:1px solid #26303c;
+    border-radius:13px;
+    padding:25px;
+    text-align:center;
+    transition:.2s;
+}
+
+.mode:hover{
+    transform:translateY(-4px);
+    border-color:#00c8ea;
+}
+
+.mode .icon{
+    height:80px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+.mode h3{
+    margin-bottom:8px;
+}
+
+.mode p{
+    color:#8995a3;
+    font-size:13px;
+}
+
+.leaderboard{
+    max-width:950px;
+    margin:auto;
+}
+
+.player{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:#10161f;
+    border:1px solid #26303c;
+    padding:16px;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+
+.rank{
+    width:45px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.avatar{
+    width:45px;
+    height:45px;
+    background:#202b37;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.playerInfo{
+    flex:1;
+}
+
+.playerInfo small{
+    color:#7f8a98;
+}
+
+.tier{
+    padding:7px 12px;
+    border-radius:7px;
+    background:#1c2935;
+    font-weight:bold;
+}
+
+.search{
+    max-width:700px;
+    margin:0 auto 25px;
+}
+
+.search input{
+    width:100%;
+    padding:15px;
+    background:#10161f;
+    border:1px solid #303b48;
+    color:white;
+    border-radius:9px;
+    outline:none;
+}
+
+.profile{
+    max-width:700px;
+    margin:auto;
+    background:#10161f;
+    border:1px solid #26303c;
+    border-radius:15px;
+    padding:30px;
+    display:none;
+}
+
+.profile h2{
+    margin-bottom:15px;
+}
+
+.profileRow{
+    display:flex;
+    justify-content:space-between;
+    padding:12px 0;
+    border-bottom:1px solid #252e39;
+}
+
+.online{
+    color:#35e67a;
+}
+
+.admin{
+    max-width:1000px;
+    margin:auto;
+    background:#10161f;
+    border:1px solid #26303c;
+    border-radius:15px;
+    padding:25px;
+}
+
+.adminBox{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+}
+
+.admin input,
+.admin select{
+    width:100%;
+    padding:12px;
+    background:#080b10;
+    border:1px solid #303b48;
+    color:white;
+    border-radius:7px;
+}
+
+.admin button{
+    padding:12px;
+    border-radius:7px;
+    background:#00a9c9;
+    color:white;
+    font-weight:bold;
+}
+
 footer{
-  position:fixed;
-  bottom:18px;
-  width:100%;
-  text-align:center;
-  color:#555;
-  font-size:12px;
+    text-align:center;
+    padding:35px;
+    color:#74808e;
+    border-top:1px solid #222b35;
 }
-footer span{color:#888}
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:500;
+}
+
+.modalBox{
+    width:min(450px,90%);
+    background:#10161f;
+    border:1px solid #303b48;
+    border-radius:14px;
+    padding:25px;
+}
+
+.modalBox input{
+    width:100%;
+    padding:13px;
+    margin:8px 0;
+    background:#080b10;
+    border:1px solid #303b48;
+    color:white;
+    border-radius:7px;
+}
+
+.close{
+    float:right;
+    background:none;
+    color:#aaa;
+    font-size:22px;
+}
+
+.hidden{
+    display:none;
+}
 
 @media(max-width:600px){
-  .nav-text{display:none}
-  nav{padding:0 20px}
+    .hero h1{
+        font-size:42px;
+    }
+
+    nav{
+        padding:0 3%;
+    }
+
+    nav button{
+        padding:8px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div id="loading">
-  <div class="logo">TIER<span>ZONE</span></div>
-  <div class="loader"><span></span></div>
+<div class="loading" id="loading">
+    <div class="loader"></div>
+    <h2>Loading TierZone...</h2>
 </div>
 
-<div id="home">
-
 <nav>
-  <div class="brand">TIER<span>ZONE</span></div>
-  <div class="nav-text">BLOXD.IO COMPETITIVE RANKINGS</div>
+    <div class="logoText">BLOXD <span>TIERZONE</span></div>
+
+    <div>
+        <button onclick="go('home')">Home</button>
+        <button onclick="go('leaderboard')">Leaderboard</button>
+        <button onclick="go('modes')">Gamemodes</button>
+        <button onclick="openSignup()">Sign Up</button>
+    </div>
 </nav>
 
+<main id="home">
+
 <section class="hero">
-  <div class="content">
+    <div>
+        <h1>BLOXD <span>TIERZONE</span></h1>
+        <p>Competitive Bloxd.io Rankings • Tier Testing • Leaderboards</p>
 
-    <div class="badge">BLOXD.IO COMPETITIVE TIER LIST</div>
+        <button class="btn" onclick="go('leaderboard')">
+            View Leaderboard
+        </button>
 
-    <h1>
-      Welcome to<br>
-      <span>TierZone</span>
-    </h1>
-
-    <p class="desc">
-      The competitive ranking hub for Bloxd.io players.
-      Check rankings, tier tests, results and leaderboards.
-    </p>
-
-    <div class="buttons">
-      <button class="primary">View Leaderboard</button>
-      <button class="secondary">Join Discord Server</button>
+        <button class="btn dark"
+        onclick="window.open('https://discord.gg/qhCCcUU9s','_blank')">
+            Join Discord Server
+        </button>
     </div>
-
-  </div>
 </section>
 
+<section id="modes">
+    <div class="title">
+        <h2>Gamemodes</h2>
+        <p>Check rankings for every competitive mode.</p>
+    </div>
+
+    <div class="modes">
+
+        <div class="mode" onclick="showMode('Sword')">
+            <div class="icon">⚔️</div>
+            <h3>Sword</h3>
+            <p>View Sword rankings</p>
+        </div>
+
+        <div class="mode" onclick="showMode('Mace')">
+            <div class="icon">🔨</div>
+            <h3>Mace</h3>
+            <p>View Mace rankings</p>
+        </div>
+
+        <div class="mode" onclick="showMode('Bedwars')">
+            <div class="icon">🛏️</div>
+            <h3>Bedwars</h3>
+            <p>View Bedwars rankings</p>
+        </div>
+
+        <div class="mode" onclick="showMode('Skywars')">
+            <div class="icon">☁️</div>
+            <h3>Skywars</h3>
+            <p>View Skywars rankings</p>
+        </div>
+
+        <div class="mode" onclick="showMode('Hole')">
+            <div class="icon">⬛</div>
+            <h3>Hole</h3>
+            <p>View Hole rankings</p>
+        </div>
+
+        <div class="mode" onclick="showMode('Soup')">
+            <div class="icon">🥣</div>
+            <h3>Soup</h3>
+            <p>View Soup rankings</p>
+        </div>
+
+        <div class="mode" onclick="showMode('Pots')">
+            <div class="icon">🧪</div>
+            <h3>Pots</h3>
+            <p>View Pots rankings</p>
+        </div>
+
+        <div class="mode" onclick="showMode('Food')">
+            <div class="icon">🍎</div>
+            <h3>Food</h3>
+            <p>View Food rankings</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="leaderboard">
+    <div class="title">
+        <h2>Global Leaderboard</h2>
+        <p>Top TierZone players</p>
+    </div>
+
+    <div class="search">
+        <input
+        id="searchInput"
+        placeholder="Search player..."
+        oninput="searchPlayer()">
+    </div>
+
+    <div id="players"></div>
+
+    <div class="profile" id="profile">
+        <h2 id="profileName"></h2>
+
+        <div class="profileRow">
+            <span>Tier</span>
+            <b id="profileTier"></b>
+        </div>
+
+        <div class="profileRow">
+            <span>Points</span>
+            <b id="profilePoints"></b>
+        </div>
+
+        <div class="profileRow">
+            <span>Status</span>
+            <b class="online">● Online</b>
+        </div>
+
+        <div class="profileRow">
+            <span>Rank History</span>
+            <b>View History</b>
+        </div>
+
+        <div class="profileRow">
+            <span>Badges</span>
+            <b>🏆 TierZone Player</b>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="title">
+        <h2>Testers</h2>
+        <p>Official TierZone testers</p>
+    </div>
+
+    <div class="leaderboard">
+
+        <div class="player">
+            <div class="rank">#1</div>
+            <div class="avatar">👑</div>
+            <div class="playerInfo">
+                <b>Bloxd Malice</b>
+                <br>
+                <small>Founder • Head Tester</small>
+            </div>
+            <div class="tier">ADMIN</div>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="title">
+        <h2>Player Registration</h2>
+        <p>Want to get tested? Join the TierZone community.</p>
+    </div>
+
+    <center>
+        <button class="btn" onclick="openSignup()">
+            Register Player
+        </button>
+    </center>
+</section>
+
+<section id="adminSection" class="hidden">
+    <div class="title">
+        <h2>Admin Panel</h2>
+        <p>Founder / Admin management</p>
+    </div>
+
+    <div class="admin">
+
+        <div class="adminBox">
+
+            <input id="newName"
+            placeholder="Player username">
+
+            <input id="newTier"
+            placeholder="Tier e.g. LT2">
+
+            <input id="newPoints"
+            type="number"
+            placeholder="Points">
+
+            <select id="newMode">
+                <option>Sword</option>
+                <option>Mace</option>
+                <option>Bedwars</option>
+                <option>Skywars</option>
+                <option>Hole</option>
+                <option>Soup</option>
+                <option>Pots</option>
+                <option>Food</option>
+            </select>
+
+            <button onclick="addPlayer()">Add Player</button>
+
+            <button onclick="clearPlayers()">Reset Demo Players</button>
+
+        </div>
+
+        <br>
+
+        <p>
+            <b>Founder:</b> @bloxd malice
+        </p>
+
+    </div>
+</section>
+
+</main>
+
 <footer>
-  Founder: <span>@bloxd malice</span>
+    <b>Bloxd TierZone</b><br>
+    Founder: @bloxd malice<br><br>
+    Competitive Bloxd.io Tier Rankings
 </footer>
 
+<div class="modal" id="signupModal">
+    <div class="modalBox">
+
+        <button class="close" onclick="closeSignup()">×</button>
+
+        <h2>Join TierZone</h2>
+
+        <input id="signupName"
+        placeholder="Bloxd.io Username">
+
+        <input id="signupDiscord"
+        placeholder="Discord Username">
+
+        <button class="btn"
+        onclick="registerPlayer()">
+            Register
+        </button>
+
+        <p id="signupMessage"></p>
+
+    </div>
 </div>
 
 <script>
-setTimeout(function(){
-  document.getElementById("loading").style.display="none";
-  document.getElementById("home").style.display="block";
-},1800);
+
+setTimeout(()=>{
+    document.getElementById("loading").style.display="none";
+},1200);
+
+
+let players = JSON.parse(localStorage.getItem("tierzonePlayers")) || [
+
+    {
+        name:"Bloxd Malice",
+        tier:"LT2 Mace",
+        points:1000,
+        mode:"Mace"
+    },
+
+    {
+        name:"Player Two",
+        tier:"HT3",
+        points:850,
+        mode:"Skywars"
+    },
+
+    {
+        name:"Player Three",
+        tier:"HT4",
+        points:720,
+        mode:"Sword"
+    },
+
+    {
+        name:"Player Four",
+        tier:"LT4",
+        points:600,
+        mode:"Bedwars"
+    }
+
+];
+
+
+function save(){
+    localStorage.setItem(
+        "tierzonePlayers",
+        JSON.stringify(players)
+    );
+}
+
+
+function renderPlayers(list=players){
+
+    const box=document.getElementById("players");
+
+    box.innerHTML="";
+
+    list
+    .sort((a,b)=>b.points-a.points)
+    .forEach((p,i)=>{
+
+        box.innerHTML += `
+
+        <div class="player"
+        onclick="openProfile('${p.name}')">
+
+            <div class="rank">#${i+1}</div>
+
+            <div class="avatar">
+                ${i===0?"👑":"⚔️"}
+            </div>
+
+            <div class="playerInfo">
+                <b>${p.name}</b>
+                <br>
+                <small>${p.mode}</small>
+            </div>
+
+            <div class="tier">
+                ${p.tier}
+            </div>
+
+            <div>
+                ${p.points} pts
+            </div>
+
+        </div>
+
+        `;
+    });
+}
+
+
+function openProfile(name){
+
+    const p=players.find(x=>x.name===name);
+
+    if(!p)return;
+
+    document.getElementById("profile").style.display="block";
+
+    document.getElementById("profileName").innerText=p.name;
+
+    document.getElementById("profileTier").innerText=p.tier;
+
+    document.getElementById("profilePoints").innerText=p.points;
+
+    document
+    .getElementById("profile")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+
+function searchPlayer(){
+
+    const value=
+    document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase();
+
+    const result=
+    players.filter(p=>
+        p.name.toLowerCase().includes(value)
+    );
+
+    renderPlayers(result);
+}
+
+
+function showMode(mode){
+
+    const result=
+    players.filter(p=>p.mode===mode);
+
+    renderPlayers(result);
+
+    document
+    .getElementById("leaderboard")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+
+function go(id){
+
+    document
+    .getElementById(id)
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+
+function openSignup(){
+
+    document
+    .getElementById("signupModal")
+    .style.display="flex";
+}
+
+
+function closeSignup(){
+
+    document
+    .getElementById("signupModal")
+    .style.display="none";
+}
+
+
+function registerPlayer(){
+
+    const name=
+    document
+    .getElementById("signupName")
+    .value
+    .trim();
+
+    const discord=
+    document
+    .getElementById("signupDiscord")
+    .value
+    .trim();
+
+    if(!name || !discord){
+
+        document
+        .getElementById("signupMessage")
+        .innerText="Please fill all fields.";
+
+        return;
+    }
+
+    document
+    .getElementById("signupMessage")
+    .innerText=
+    "Registration received! Join the Discord server for testing.";
+
+    setTimeout(()=>{
+
+        window.open(
+            "https://discord.gg/qhCCcUU9s",
+            "_blank"
+        );
+
+    },1000);
+}
+
+
+function addPlayer(){
+
+    const name=
+    document
+    .getElementById("newName")
+    .value
+    .trim();
+
+    const tier=
+    document
+    .getElementById("newTier")
+    .value
+    .trim();
+
+    const points=
+    Number(
+        document
+        .getElementById("newPoints")
+        .value
+    );
+
+    const mode=
+    document
+    .getElementById("newMode")
+    .value;
+
+    if(!name || !tier){
+
+        alert("Enter player name and tier.");
+
+        return;
+    }
+
+    players.push({
+        name:name,
+        tier:tier,
+        points:points || 0,
+        mode:mode
+    });
+
+    save();
+
+    renderPlayers();
+
+    alert("Player added successfully.");
+}
+
+
+function clearPlayers(){
+
+    if(!confirm("Reset demo players?"))return;
+
+    localStorage.removeItem("tierzonePlayers");
+
+    location.reload();
+}
+
+
+renderPlayers();
+
 </script>
 
 </body>
